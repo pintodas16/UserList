@@ -1,8 +1,8 @@
 function UserSort() {
   return (
     <section className="">
-      {/* <!-- container  --> */}
-      <div className="container max-w-6xl mx-auto mt-6 mb-8 px-4 py-4 border border-gray-300 bg-white border-dotted rounded-lg">
+      {/* <!-- container  container  md:max-w-6xl mx-auto mt-6 mb-8 px-4 py-4 --> */}
+      <div className="container  md:max-w-6xl mx-auto mt-6 mb-8 px-4 py-4 border border-gray-300 bg-white border-dotted rounded-lg">
         {/* <!-- flex continaer  --> */}
         <div className="flex items-center gap-4 justify-end">
           {/* <!-- for sorting  --> */}
