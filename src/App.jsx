@@ -1,15 +1,18 @@
+import { Outlet } from "react-router-dom";
+import Footer from "./components/footer/Footer.jsx";
+import Header from "./components/header/Header.jsx";
 import { SortSearchContextProvider } from "./contexts/SortContext.jsx";
 import { UserContextProvider } from "./contexts/userContext.jsx";
-import HomePage from "./pages/HomePage.jsx";
-
 function App() {
   return (
     <UserContextProvider>
       <SortSearchContextProvider>
-        <HomePage />
+        <Header />
+        <Outlet />
+        <Footer />
       </SortSearchContextProvider>
     </UserContextProvider>
   );
 }
-
+// onOpenModal={handleUserFormModal}
 export default App;

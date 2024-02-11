@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 function User({ user }) {
   // console.log(user);
   const name = `${user.firstName} ${user.lastName}` || "";
   const address = `${user?.address?.address},${user?.address?.city}` || "";
   return (
-    <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg">
-      {/* <!-- avatar,name and email container  flex gap-2 flex-col items-center justify-center --> */}
+    <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg overflow-hidden">
+      {/* <!-- avatar,name and email */}
       <div className=" ">
         {/* <!-- user avatar  --> */}
         <img
@@ -20,7 +22,12 @@ function User({ user }) {
       <div className="flex flex-col gap-2 mt-4">
         {/* <!-- name  --> */}
         <div className="">
-          <p className="text-xl capitalize font-semibold">{name}</p>
+          <Link
+            to={`/user/${user.id}`}
+            className="text-xl capitalize font-semibold"
+          >
+            {name}
+          </Link>
         </div>
         {/* email  */}
         <div className="flex items-center gap-2 text-lg font-medium">

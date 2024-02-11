@@ -1,18 +1,12 @@
 import { useEffect } from "react";
 import Loader from "../components/Loder.jsx";
-import Header from "../components/header/Header.jsx";
 import AddUserFormContainer from "../components/users/AddUser/AddUserFormContainer.jsx";
 import UserList from "../components/users/UserList.jsx";
-import { useSortSearchContext } from "../contexts/SortContext.jsx";
 import { useUserContext } from "../contexts/userContext.jsx";
-
 function HomePage() {
-  const { users, loading, error, userFormModal, handleUserFormModal } =
-    useUserContext();
+  const { users, loading, error, userFormModal } = useUserContext();
 
-  // console.log(users);
-  // console.log(users, loading, error, userFormModal);
-
+  // when add user form popup stop y scrolling
   useEffect(() => {
     if (userFormModal) {
       document.body.classList.add("overflow-y-hidden");
@@ -38,11 +32,11 @@ function HomePage() {
 
   return (
     <>
-      <Header onOpenModal={handleUserFormModal} />
       {content}
       {userFormModal && <AddUserFormContainer />}
-      <footer></footer>
     </>
   );
 }
 export default HomePage;
+
+// {userFormModal && <AddUserFormContainer />}
