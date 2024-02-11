@@ -14,7 +14,7 @@ function UserSort() {
             <select
               name=""
               id=""
-              className="px-2 py-1 md:text-lg border-2 border-gray-200 border-dotted focus:ring-blue-400 focus:outline-blue-400
+              className="px-2 py-1 md:text-lg border-2 border-sky-600 border-dotted focus:ring-sky-600 focus:outline-sky-600
                       rounded-lg"
               value={sortTerm}
               onChange={handleSortTerm}
@@ -23,6 +23,7 @@ function UserSort() {
                 select one{" "}
               </option>
               <option value="firstName">FirstName</option>
+              <option value="name">name</option>
               <option value="lastName"> LastName</option>
               <option value="email"> Email</option>
               <option value="companyname">Company name</option>
