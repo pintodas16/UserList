@@ -1,44 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Loader from "../components/Loder.jsx";
 import Header from "../components/header/Header.jsx";
-import AddUser from "../components/users/AddUser.jsx";
+import AddUserFormContainer from "../components/users/AddUser/AddUserFormContainer.jsx";
 import UserList from "../components/users/UserList.jsx";
-import axios from "../utils/axiosInstance.js";
+import { useUserContext } from "../contexts/userContext.jsx";
 
 function HomePage() {
-  const [users, setUsers] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [userModal, setUserModal] = useState(false);
-  const handleUserModal = () => {
-    setUserModal((prev) => !prev);
-  };
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const users = await axios.get("/users");
-        const data = await users.data;
-        // console.log(data.users);
-        setUsers(data.users);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-    getUsers();
-  }, []);
+  const { users, loading, error, userFormModal, handleUserFormModal } =
+    useUserContext();
+  console.log(users);
+  // console.log(users, loading, error, userFormModal);
 
   useEffect(() => {
-    if (userModal) {
+    if (userFormModal) {
       document.body.classList.add("overflow-y-hidden");
     } else {
       document.body.classList.remove("overflow-y-hidden");
     }
-  }, [userModal]);
+  }, [userFormModal]);
 
   // dechide what to show
   let content = null;
   if (loading) {
-    content = "loading";
+    content = <Loader />;
   }
   if (!loading && error) {
     content = error;
@@ -49,12 +33,12 @@ function HomePage() {
   if (!loading && !error && users?.length > 0) {
     content = <UserList users={users} />;
   }
-  let modal = true;
+
   return (
     <>
-      <Header onOpenModal={handleUserModal} />
+      <Header onOpenModal={handleUserFormModal} />
       {content}
-      {userModal && <AddUser onClose={handleUserModal} />}
+      {userFormModal && <AddUserFormContainer />}
       <footer></footer>
     </>
   );

@@ -1,14 +1,14 @@
 function User({ user }) {
-  console.log(user);
-  const name = `${user.firstName} ${user.lastName}`;
-  const address = `${user.address.address},${user.address.city}`;
+  // console.log(user);
+  const name = `${user.firstName} ${user.lastName}` || "";
+  const address = `${user?.address?.address},${user?.address?.city}` || "";
   return (
     <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg">
       {/* <!-- avatar,name and email container  flex gap-2 flex-col items-center justify-center --> */}
       <div className=" ">
         {/* <!-- user avatar  --> */}
         <img
-          src={user.image}
+          src={user?.image}
           className=" h-40 px-8 w-full bg-cover bg-center rounded-lg "
           alt=""
         />
@@ -27,7 +27,7 @@ function User({ user }) {
           <span>
             <i className="fa-regular fa-envelope"></i>
           </span>
-          <span className="">{user.email}</span>
+          <span className="">{user?.email}</span>
         </div>
         {/* <!-- address  --> */}
         <div className=" flex gap-2 items-center text-lg font-medium">
@@ -37,7 +37,7 @@ function User({ user }) {
         {/* <!-- company name  --> */}
         <div className="flex gap-2 items-center text-lg font-medium">
           <i className="fa-solid fa-briefcase"></i>
-          <span> {user.company.name} </span>
+          <span> {user?.company?.name} </span>
         </div>
       </div>
     </div>

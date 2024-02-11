@@ -1,3 +1,5 @@
+import Button from "../Btn";
+
 function Navbar({ onOpenModal }) {
   const handleOpenBtn = (e) => {
     e.preventDefault();
@@ -25,13 +27,8 @@ function Navbar({ onOpenModal }) {
         </form>
       </div>
       {/* <!-- add task  --> */}
-      <a
-        href=""
-        className="  px-6 py-2 bg-sky-600 border border-bg-red-400 rounded-lg text-xl font-bold text-center text-gray-100 hover:bg-white hover:border-sky-600 hover:text-sky-600 "
-        onClick={handleOpenBtn}
-      >
-        Add User
-      </a>
+
+      <Button handleBtn={handleOpenBtn}>Add User</Button>
     </nav>
   );
 }

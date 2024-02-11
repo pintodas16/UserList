@@ -1,15 +1,17 @@
 import { useRef } from "react";
+import { useUserContext } from "../../contexts/userContext";
+function AddUser() {
+  const { handleUserFormModal } = useUserContext();
 
-function AddUser({ onClose }) {
+  // handle close modal when user click outside of the form
   const modalRef = useRef();
   const handleCloseModal = (e) => {
     if (e.target === modalRef.current) {
-      onClose();
+      handleUserFormModal();
     }
   };
 
   return (
-    // <!-- <h5 className="text-5xl bold">hello world </h5> -->
     <section
       ref={modalRef}
       onClick={handleCloseModal}
@@ -26,7 +28,7 @@ function AddUser({ onClose }) {
             </h5>
             {/* modal close btn  */}
             <div
-              onClick={onClose}
+              onClick={handleUserFormModal}
               className="border-2 px-2 py-1 absolute top-2 right-5 rounded-lg cursor-pointer"
             >
               <i className="fa-solid fa-x"></i>
@@ -35,9 +37,9 @@ function AddUser({ onClose }) {
               <div className="flex flex-col gap-1">
                 {/* <!-- first name nad last name  --> */}
                 <div className="flex gap-4 ">
-                  {/* <!-- first name  --> */}
-                  <div className="w-1/2 flex flex-col gap-1 ">
-                    <label className="font-semibold text-lg" htmlFor="">
+                  {/* <!-- first name w-1/2 flex flex-col gap-1  --> */}
+                  <div className="">
+                    <label className="block font-semibold text-lg" htmlFor="">
                       First name
                     </label>
                     <input
@@ -46,10 +48,10 @@ function AddUser({ onClose }) {
                       placeholder="enter first name"
                     />
                   </div>
-                  {/* <!-- last  name  --> */}
-                  <div className="w-1/2 flex flex-col">
+                  {/* <!-- last  name w-1/2 flex flex-col --> */}
+                  <div className="">
                     <label
-                      className="font-semibold text-lg capitalize"
+                      className="block font-semibold text-lg capitalize"
                       htmlFor=""
                     >
                       last name
@@ -62,7 +64,7 @@ function AddUser({ onClose }) {
                   </div>
                 </div>
                 {/* <!-- email  --> */}
-                <div className="w-full">
+                <div className="">
                   <label
                     className="block font-semibold text-lg capitalize"
                     htmlFor=""

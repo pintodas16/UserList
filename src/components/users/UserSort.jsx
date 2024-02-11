@@ -14,8 +14,10 @@ function UserSort() {
               className="px-2 py-1 md:text-lg border-2 border-gray-200 border-dotted focus:ring-blue-400 focus:outline-blue-400
                       rounded-lg"
             >
-              <option value="date-ascending"> Date(ascending)</option>
-              <option value="date-descending"> Date(descending)</option>
+              <option value="firstName">FirstName</option>
+              <option value="lastName"> LastName</option>
+              <option value="email"> Email</option>
+              <option value="companyname">Company name</option>
             </select>
           </div>
         </div>
