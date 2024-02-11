@@ -16,12 +16,12 @@ function AddUserFormContainer() {
     <section
       ref={modalRef}
       onClick={handleCloseModal}
-      className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm  "
+      className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm "
     >
       {/* <!-- container div  --> */}
-      <div className="container max-w-sm md:max-w-lg mx-auto   ">
-        {/* <!-- flex container h-screen  --> */}
-        <div className="flex h-screen  justify-center items-center">
+      <div className="container max-w-sm md:max-w-lg mx-auto  ">
+        {/* <!-- flex container h-screen   flex   justify-center items-center--> */}
+        <div className="absolute  transform -translate-x-1/2 -translate-y-1/2  top-1/2 left-1/2">
           {/* <!-- form container  --> */}
           <div className="p-4 bg-white border relative  border-sky-600 rounded-lg ">
             <h5 className="font-semibold text-xl text-center border-b border-b-sky-500 pb-2 mb-2">
