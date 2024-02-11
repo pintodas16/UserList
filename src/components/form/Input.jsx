@@ -15,14 +15,16 @@ function Input({ label, type, name, error, accept, value, onChange }) {
 
   return (
     <div className="">
-      <label
-        className={`block font-semibold text-md ${
-          error?.isError ? "md:text-md" : "md:text-lg"
-        }  capitalize`}
-        htmlFor=""
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          className={`block font-semibold text-md ${
+            error?.isError ? "md:text-md" : "md:text-lg"
+          }  capitalize`}
+          htmlFor=""
+        >
+          {label}
+        </label>
+      )}
       {/* <input {...commonProps} />
       {error[name] ? <div className="text-red-700">{error[name]}</div> : ""} */}
       {type === "text" && <input {...commonProps} />}

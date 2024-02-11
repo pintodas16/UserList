@@ -1,21 +1,23 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const SortSearchContext = createContext();
 const SortSearchContextProvider = ({ children }) => {
-  const [filter, setFilter] = useState("");
+  const [sortTerm, setSortTerm] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const handleFilterTerm = (e) => {
-    setFilter(e.target.value);
+  const handleSortTerm = (e) => {
+    setSortTerm(e.target.value);
+    console.log(e.target.value);
   };
   const handleSearchTerm = (e) => {
     setSearchTerm(e.target.value);
+    console.log(e.target.value);
   };
   return (
     <SortSearchContext.Provider
       value={{
-        filter,
+        sortTerm,
         searchTerm,
-        handleFilterTerm,
+        handleSortTerm,
         handleSearchTerm,
       }}
     >
@@ -23,4 +25,8 @@ const SortSearchContextProvider = ({ children }) => {
     </SortSearchContext.Provider>
   );
 };
-export { SortSearchContextProvider };
+
+function useSortSearchContext() {
+  return useContext(SortSearchContext);
+}
+export { SortSearchContextProvider, useSortSearchContext };

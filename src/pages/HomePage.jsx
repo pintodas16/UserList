@@ -3,12 +3,14 @@ import Loader from "../components/Loder.jsx";
 import Header from "../components/header/Header.jsx";
 import AddUserFormContainer from "../components/users/AddUser/AddUserFormContainer.jsx";
 import UserList from "../components/users/UserList.jsx";
+import { useSortSearchContext } from "../contexts/SortContext.jsx";
 import { useUserContext } from "../contexts/userContext.jsx";
 
 function HomePage() {
   const { users, loading, error, userFormModal, handleUserFormModal } =
     useUserContext();
-  console.log(users);
+
+  // console.log(users);
   // console.log(users, loading, error, userFormModal);
 
   useEffect(() => {
