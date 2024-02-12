@@ -5,9 +5,9 @@ function User({ user }) {
   const name = `${user.firstName} ${user.lastName}` || "";
   const address = `${user?.address?.address},${user?.address?.city}` || "";
   return (
-    <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg  flex justify-center flex-col items-center">
+    <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg  ">
       {/* <!-- avatar,name and email */}
-      <div className="flex justify-center ">
+      <div className="border border-red-300 flex justify-center ">
         {/* <!-- user avatar  --> */}
         <img
           src={user?.image}
@@ -39,7 +39,9 @@ function User({ user }) {
         {/* <!-- address  --> */}
         <div className=" flex gap-2 items-center text-lg font-medium">
           <i className="fa-solid fa-location-dot"></i>
-          <p className=" max-w-64 text-balance overflow-hidden">{address}</p>
+          <p className=" max-w-64 md:max-w-full text-balance overflow-hidden">
+            {address}
+          </p>
         </div>
         {/* <!-- company name  --> */}
         <div className="flex gap-2 items-center text-lg font-medium">
