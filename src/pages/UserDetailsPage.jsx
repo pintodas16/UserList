@@ -1,22 +1,22 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Loader from "../components/Loder";
 import UserDetails from "../components/users/userDetails/UserDetails.jsx";
 import { useUserContext } from "../contexts/userContext";
 function UserDetailsPage() {
-  const { user, loding, error, getUser } = useUserContext();
+  const { users } = useUserContext();
   const { id } = useParams();
-  useEffect(() => {
-    getUser(id);
-  }, [id]);
+  const user = users.filter((user) => Number(user.id) === Number(id));
 
-  // dechide what to show
-  // let content;
-  if (loding) {
-    return <Loader />;
-  }
-
-  return <>{user?.id && <UserDetails user={user} />} </>;
+  return (
+    <>
+      {user.length > 0 ? (
+        <UserDetails user={user[0]} />
+      ) : (
+        <div className="text-center text-2xl h-96">
+          Ther is no user with this id{" "}
+        </div>
+      )}
+    </>
+  );
 }
 
 export default UserDetailsPage;

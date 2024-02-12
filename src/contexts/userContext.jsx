@@ -5,7 +5,6 @@ import axios from "../utils/axiosInstance";
 const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
   const [loding, setLoding] = useState(false);
   const [error, setError] = useState(false);
   const [createdUser, setCreatedUser] = useState({});
@@ -33,23 +32,6 @@ const UserContextProvider = ({ children }) => {
       const data = await users.data;
       // console.log(data.users);
       setUsers(data.users);
-      setLoding(false);
-    } catch (error) {
-      // setError(error.message);
-      setError(true);
-      setLoding(false);
-    }
-  };
-  //get single user by id
-  const getUser = async (id) => {
-    setLoding(true);
-    setError(false);
-    try {
-      const users = await axios.get(`/users/${id}`);
-      const data = await users.data;
-      // console.log(loding);
-      // console.log(data);
-      setUser(data);
       setLoding(false);
     } catch (error) {
       // setError(error.message);
@@ -113,8 +95,6 @@ const UserContextProvider = ({ children }) => {
         userFormModal,
         handleUserFormModal,
         addUser,
-        getUser,
-        user,
       }}
     >
       {children}
