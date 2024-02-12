@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useUserContext } from "../../contexts/userContext.jsx";
 import Button from "../Btn";
 import SearchBox from "./SearchBox.jsx";
 
 function Navbar() {
+  const { id } = useParams();
   const { userFormModal, handleUserFormModal } = useUserContext();
 
   const handleOpenBtn = (e) => {
@@ -21,9 +22,7 @@ function Navbar() {
         <span>List</span>
       </Link>
       {/* <!-- secarchbar --> */}
-      <div className=" ">
-        <SearchBox />
-      </div>
+      {!id && <SearchBox />}
       {/* <!-- add task  --> */}
 
       <Button handleBtn={handleOpenBtn}>Add User</Button>

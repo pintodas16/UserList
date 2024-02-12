@@ -4,18 +4,30 @@ import axios from "../utils/axiosInstance";
 // create a context
 const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
-  const [users, setUsers] = useState(null);
-  const [loading, setLoding] = useState(true);
-  const [error, setError] = useState(null);
-  const [createdUser, setCreatedUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
+  const [loding, setLoding] = useState(false);
+  const [error, setError] = useState(false);
+  const [createdUser, setCreatedUser] = useState({});
 
   const [userFormModal, setUserFormModal] = useState(false);
   const handleUserFormModal = () => {
     setUserFormModal((prev) => !prev);
   };
 
+  // when add user form popup stop y scrolling
+  useEffect(() => {
+    if (userFormModal) {
+      document.body.classList.add("overflow-y-hidden");
+    } else {
+      document.body.classList.remove("overflow-y-hidden");
+    }
+  }, [userFormModal]);
+
   //   get all users
   const getUsers = async () => {
+    setLoding(true);
+    setError(false);
     try {
       const users = await axios.get("/users");
       const data = await users.data;
@@ -23,12 +35,34 @@ const UserContextProvider = ({ children }) => {
       setUsers(data.users);
       setLoding(false);
     } catch (error) {
-      setError(error.message);
+      // setError(error.message);
+      setError(true);
+      setLoding(false);
     }
   };
+  //get single user by id
+  const getUser = async (id) => {
+    setLoding(true);
+    setError(false);
+    try {
+      const users = await axios.get(`/users/${id}`);
+      const data = await users.data;
+      // console.log(loding);
+      // console.log(data);
+      setUser(data);
+      setLoding(false);
+    } catch (error) {
+      // setError(error.message);
+      setError(true);
+      setLoding(false);
+    }
+  };
+
   // addUser       https://dummyjson.com/users/add
 
   const addUser = async (user) => {
+    setLoding(true);
+    setError(false);
     const {
       firstName,
       lastName,
@@ -60,7 +94,9 @@ const UserContextProvider = ({ children }) => {
       setLoding(false);
     } catch (error) {
       console.log(error.message);
-      setError(error.message);
+      // setError(error.message);
+      setError(true);
+      setLoding(false);
     }
   };
 
@@ -72,11 +108,13 @@ const UserContextProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         users,
-        loading,
+        loding,
         error,
         userFormModal,
         handleUserFormModal,
         addUser,
+        getUser,
+        user,
       }}
     >
       {children}

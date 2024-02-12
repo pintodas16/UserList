@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../contexts/userContext";
 import Button from "../../Btn";
 import Form from "../../form/Form";
 import Input from "../../form/Input";
 function AddUserForm() {
+  const navigate = useNavigate();
   const { addUser, handleUserFormModal } = useUserContext();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -99,6 +101,7 @@ function AddUserForm() {
         id: `${Math.round(Math.random() * 100) + 111}`,
       });
       handleUserFormModal();
+      navigate("/");
     } else {
       // form is not valid
     }
