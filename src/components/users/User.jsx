@@ -5,13 +5,13 @@ function User({ user }) {
   const name = `${user.firstName} ${user.lastName}` || "";
   const address = `${user?.address?.address},${user?.address?.city}` || "";
   return (
-    <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg overflow-hidden">
+    <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg overflow-hidden flex justify-center flex-col items-center">
       {/* <!-- avatar,name and email */}
-      <div className=" ">
+      <div className="flex justify-center ">
         {/* <!-- user avatar  --> */}
         <img
           src={user?.image}
-          className=" h-40 px-8 w-full bg-cover bg-center rounded-lg "
+          className=" h-40 px-8 w-56 bg-cover bg-center rounded-lg "
           alt=""
         />
         {/* <!-- name and email  --> */}

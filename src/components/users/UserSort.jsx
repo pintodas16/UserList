@@ -19,9 +19,7 @@ function UserSort() {
               value={sortTerm}
               onChange={handleSortTerm}
             >
-              <option value="" disabled>
-                select one{" "}
-              </option>
+              <option value="">select one </option>
               <option value="firstName">FirstName</option>
 
               <option value="lastName"> LastName</option>
