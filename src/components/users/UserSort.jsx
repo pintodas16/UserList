@@ -23,10 +23,11 @@ function UserSort() {
                 select one{" "}
               </option>
               <option value="firstName">FirstName</option>
-              <option value="name">name</option>
+
               <option value="lastName"> LastName</option>
               <option value="email"> Email</option>
               <option value="companyname">Company name</option>
+              <option value="name">name</option>
             </select>
           </div>
         </div>
