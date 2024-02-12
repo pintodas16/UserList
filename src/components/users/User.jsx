@@ -7,7 +7,7 @@ function User({ user }) {
   return (
     <div className=" bg-white  px-6 py-6 border border-gray-200 rounded-xl hover:shadow-lg  ">
       {/* <!-- avatar,name and email */}
-      <div className="border border-red-300 flex justify-center ">
+      <div className=" flex justify-center ">
         {/* <!-- user avatar  --> */}
         <img
           src={user?.image}
